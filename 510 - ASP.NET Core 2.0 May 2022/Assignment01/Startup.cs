@@ -29,13 +29,10 @@ namespace Assignment01
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "Instructors",
-                    template: "Instructors",
-                    defaults: new {controller="home",action = "Instructor"} ) ;
+                
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=home}/{action=_Layout}");
+                    template: "{controller=home}/{action=Index}");
             });
 
             app.UseRouting();

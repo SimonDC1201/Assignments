@@ -4,24 +4,26 @@
 @{
     ViewData["Title"] = "Courses";
 }
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Course Number</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-    @foreach (var item in @Model.Course)
-    {
-        <tr>
-            <th scope="row">@item.CourseId</th>
-            <td>@item.CourseName</td>
-            <td>@item.CourseNumber</td>
-            <td>@item.Description</td>
-        </tr>
-    }
-</tbody>
-</table>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Number</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.Course)
+            {
+                <tr>
+                    <th scope="row">@item.CourseId</th>
+                    <td>@item.CourseName</td>
+                    <td>@item.CourseNumber</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

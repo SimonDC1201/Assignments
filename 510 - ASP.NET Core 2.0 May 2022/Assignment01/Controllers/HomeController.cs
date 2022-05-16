@@ -1,11 +1,20 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Assignment01.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Assignment01.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+        [Route("")]
+        [Route("Home")]
+        [Route("Home/Index")]
         public IActionResult Index()
         {
             return View();
@@ -43,7 +52,7 @@ namespace Assignment01.Controllers
         public IActionResult Courses()
         {
             CourseViewModel cvm = new CourseViewModel();
-            
+
             List<DTO.Course> courses = new List<DTO.Course>()
             {
                 new DTO.Course{CourseId = 0001, CourseName = "Mathematique", CourseNumber = 123, Description="This is Mathematic 0001"},
@@ -53,10 +62,12 @@ namespace Assignment01.Controllers
             cvm.Course = courses;
             return View(cvm);
         }
-        [Route("")]
-        [Route("Home")]
-        [Route("Home/Index")]
-        public IActionResult _Layout()
+        
+        //public IActionResult _Layout()
+        //{
+        //    return View();
+        //}
+        IActionResult Privacy()
         {
             return View();
         }

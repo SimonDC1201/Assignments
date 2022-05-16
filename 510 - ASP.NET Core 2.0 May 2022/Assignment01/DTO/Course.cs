@@ -1,6 +1,5 @@
 ﻿namespace Assignment01.DTO
 {
-
     public class Course
     {
         public int CourseId { get; set; }
