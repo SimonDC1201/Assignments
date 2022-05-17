@@ -2,27 +2,29 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    IgnoreBody();
-    ViewData["Title"] = "Instructors";
+    ViewData["Title"] = "Student";
 }
+
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Instructor ID</th>
+            <th>Student ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email Address</th>
+            <th>Phone #</th>
             <th>Course</th>
         </tr>
     </thead>
 <tbody>
-    @foreach (var item in @Model.Instructor)
+    @foreach (var item in @Model.Students)
     {
         <tr>
-            <th scope="row">@item.InstructorId</th>
+            <th scope="row">@item.StudentId</th>
             <td>@item.FirstName</td>
             <td>@item.LastName</td>
             <td>@item.EmailAddress</td>
+            <td>@item.PhoneNumber</td>
             <td>@item.Course</td>
         </tr>
     }

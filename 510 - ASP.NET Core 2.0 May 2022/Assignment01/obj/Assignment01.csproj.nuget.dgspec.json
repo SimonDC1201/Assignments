@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sdion\\Desktop\\WebDev\\ASP.net CORE\\New folder\\Assignment01\\Assignment01.csproj": {}
+    "C:\\Program Files\\Git\\repos\\Assignments\\510 - ASP.NET Core 2.0 May 2022\\Assignment01\\Assignment01.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sdion\\Desktop\\WebDev\\ASP.net CORE\\New folder\\Assignment01\\Assignment01.csproj": {
+    "C:\\Program Files\\Git\\repos\\Assignments\\510 - ASP.NET Core 2.0 May 2022\\Assignment01\\Assignment01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sdion\\Desktop\\WebDev\\ASP.net CORE\\New folder\\Assignment01\\Assignment01.csproj",
+        "projectUniqueName": "C:\\Program Files\\Git\\repos\\Assignments\\510 - ASP.NET Core 2.0 May 2022\\Assignment01\\Assignment01.csproj",
         "projectName": "Assignment01",
-        "projectPath": "C:\\Users\\sdion\\Desktop\\WebDev\\ASP.net CORE\\New folder\\Assignment01\\Assignment01.csproj",
+        "projectPath": "C:\\Program Files\\Git\\repos\\Assignments\\510 - ASP.NET Core 2.0 May 2022\\Assignment01\\Assignment01.csproj",
         "packagesPath": "C:\\Users\\sdion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sdion\\Desktop\\WebDev\\ASP.net CORE\\New folder\\Assignment01\\obj\\",
+        "outputPath": "C:\\Program Files\\Git\\repos\\Assignments\\510 - ASP.NET Core 2.0 May 2022\\Assignment01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
