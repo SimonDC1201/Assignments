@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Assignment02.Models.Student>
+@{
+    ViewData["Title"] = "Student Page";
+}
+
+<h4>Student</h4>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=> model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.StudentFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.StudentLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.StudentCourseRegistered)
+        </th>
+    </tr>
+    <tbody>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <th>
+                @Html.DisplayFor(model=> item.StudentId)
+            </th>
+            <th>
+                @Html.DisplayFor(model=> item.StudentFirstName)
+            </th>
+            <th>
+                @Html.DisplayFor(model=> item.StudentLastName)
+            </th>
+            <th>
+                @Html.DisplayFor(model=> item.StudentCourseRegistered)
+            </th>
+        </tr>
+   }
+    </tbody>
+</table>
