@@ -1,51 +1,50 @@
 ﻿@model Assignment02.Models.InstructorModel
 
 @{
-    ViewData["Title"] = "Create";
-
+    ViewData["Title"] = "Delete";
+    InstructorModel instructor = TempData["instructorbyid"] as InstructorModel;
 }
 
-<h4>Add New Instructor</h4>
+<h1>DELETE</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<h4>@instructor.FirstName @instructor.LastName</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="post">
+        <form asp-action="DeleteFinal" asp-controller="Instructor" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="InstructorId" class="control-label"></label>
-                <input asp-for="InstructorId" class="form-control" />
+                <input asp-for="InstructorId" value="@instructor.InstructorId" class="form-control" disabled/>
                 <span asp-validation-for="InstructorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <input asp-for="FirstName" value="@instructor.FirstName" class="form-control" disabled />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <input asp-for="LastName" value="@instructor.LastName" class="form-control" disabled/>
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" value="@instructor.Email" class="form-control" disabled/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CourseId" class="control-label"></label>
-                <input asp-for="CourseId" class="form-control" />
+                <input asp-for="CourseId" value="@instructor.CourseId" class="form-control" disabled/>
                 <span asp-validation-for="CourseId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="hidden" value="@instructor"/>
+                <button type="submit" value="delete" class="btn btn-danger">Delete</button>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

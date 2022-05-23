@@ -31,59 +31,67 @@ namespace Assignment02.Controllers
 
         // POST: CourseController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseModel course)
         {
-            using(var db = new SchoolDbContext())
+            using (var db = new SchoolDbContext())
             {
                 db.Courses.Add(course);
                 db.SaveChanges();
-                db.Courses.ToList();
+                TempData["courses"] = db.Courses.ToList();
             }
 
             return View("Index");
         }
 
         // GET: CourseController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(CourseModel item)
         {
+            using(var db = new SchoolDbContext())
+            {
+                TempData["coursebyid"] = db.Courses.Where(c => c.CourseId == item.CourseId).FirstOrDefault();
+            }
+
             return View();
         }
 
         // POST: CourseController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(CourseModel item)
         {
-            try
+            using(var db = new SchoolDbContext())
             {
-                return RedirectToAction(nameof(Index));
+                var CourseTemp = db.Courses.Where(c => c.CourseId == item.CourseId).FirstOrDefault();
+                CourseTemp.CourseId = item.CourseId;
+                CourseTemp.CourseName = item.CourseName;
+                db.SaveChanges();
+                TempData["courses"] = db.Courses.ToList();
             }
-            catch
-            {
-                return View();
-            }
+
+            return View("Index");
         }
 
         // GET: CourseController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(CourseModel item)
         {
+            using(var db = new SchoolDbContext())
+            {
+                TempData["coursebyid"] = db.Courses.Where(c=>c.CourseId ==item.CourseId).FirstOrDefault();
+            }
             return View();
         }
 
         // POST: CourseController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteFinal(CourseModel course)
         {
-            try
+            using(var db =new SchoolDbContext())
             {
-                return RedirectToAction(nameof(Index));
+                db.Attach(course);
+                db.Courses.Remove(course);
+                db.SaveChanges();
+                TempData["courses"] = db.Courses.ToList();
             }
-            catch
-            {
-                return View();
-            }
+            return View("Index");
         }
     }
 }

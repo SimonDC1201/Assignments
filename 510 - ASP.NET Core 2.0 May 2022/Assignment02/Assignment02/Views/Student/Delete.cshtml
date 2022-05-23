@@ -9,40 +9,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>StudentModel</h4>
-    <h4>Edit Student</h4>
+    <h4>@student.FirstName @student.LastName</h4>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="DeleteFinal" asp-controller="Student" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="StudentId" class="control-label"></label>
-                <input asp-for="StudentId" class="form-control" value="@student.StudentId" />
+                <input asp-for="StudentId" class="form-control" value="@student.StudentId" disabled/>
                 <span asp-validation-for="StudentId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" value="@student.FirstName"/>
+                <input asp-for="FirstName" class="form-control" value="@student.FirstName" disabled/>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" value="@student.LastName"/>
+                <input asp-for="LastName" class="form-control" value="@student.LastName" disabled/>
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" value="@student.Email"/>
+                <input asp-for="Email" class="form-control" value="@student.Email" disabled/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" value="@student.Phone"/>
+                <input asp-for="Phone" class="form-control" value="@student.Phone" disabled/>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CourseId" class="control-label"></label>
-                <input asp-for="CourseId" class="form-control" value="@student.CourseId"/>
+                <input asp-for="CourseId" class="form-control" value="@student.CourseId" disabled/>
                 <span asp-validation-for="CourseId" class="text-danger"></span>
                 <input type="hidden" value="@student"/>
                 <button type="submit" value="delete" class="btn btn-danger">Delete</button>
@@ -51,7 +50,7 @@
         </form>
     </div>
 </div>
-    
+ </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

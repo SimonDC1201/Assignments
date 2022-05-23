@@ -61,12 +61,10 @@ namespace Assignment02.Controllers
             {
                 var studentTemp = db.Students.Where(s=>s.StudentId==student.StudentId).FirstOrDefault();
 
-                studentTemp.StudentId = student.StudentId;
                 studentTemp.FirstName = student.FirstName;
                 studentTemp.LastName = student.LastName;
                 studentTemp.Email = student.Email;
                 studentTemp.Phone = student.Phone;
-                studentTemp.CourseId = student.CourseId;
 
                 db.SaveChanges();
                 TempData["students"] = db.Students.ToList();
