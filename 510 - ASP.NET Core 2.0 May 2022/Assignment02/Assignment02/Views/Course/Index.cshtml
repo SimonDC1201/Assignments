@@ -23,24 +23,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in courses) {
+@foreach (var course in courses) {
         <tr>
             <td>
-                @item.CourseId
+                @course.CourseId
             </td>
             <td>
-                @item.CourseName
+                @course.CourseName
             </td>
             <td>
                <span>
                    <form asp-action="Edit" asp-controller="Course" method="post">
-                       <input type="hidden" asp-for="@item.CourseId" value="@item.CourseId"/>
+                       <input type="hidden" asp-for="@course.CourseId" value="@course.CourseId"/>
                        <button type="submit" class="btn btn-success">Edit</button>
                    </form>
                </span>
                <span>
                    <form asp-action="Delete" asp-controller="Course" method="post">
-                       <input type="hidden" asp-for="@item.CourseId" value="@item.CourseId"/>
+                       <input type="hidden" asp-for="@course.CourseId" value="@course.CourseId"/>
                        <button type="submit" class="btn btn-danger">Delete</button>
                    </form>
                </span>

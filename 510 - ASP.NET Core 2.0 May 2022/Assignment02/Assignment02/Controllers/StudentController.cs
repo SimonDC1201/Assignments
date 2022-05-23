@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Assignment02.Models;
 using System.Linq;
 
@@ -15,12 +14,6 @@ namespace Assignment02.Controllers
             {
             TempData["students"] =  db.Students.ToList();
             }
-            return View();
-        }
-
-        // GET: StudentController/Details/5
-        public ActionResult Details(int id)
-        {
             return View();
         }
 

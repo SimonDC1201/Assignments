@@ -16,13 +16,6 @@ namespace Assignment02.Controllers
             }
             return View();
         }
-
-        // GET: CourseController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: CourseController/Create
         public ActionResult Create()
         {
@@ -71,27 +64,27 @@ namespace Assignment02.Controllers
         }
 
         // GET: CourseController/Delete/5
-        public ActionResult Delete(CourseModel item)
+        [HttpPost]
+        public ActionResult Delete(CourseModel course)
         {
             using(var db = new SchoolDbContext())
             {
-                TempData["coursebyid"] = db.Courses.Where(c=>c.CourseId ==item.CourseId).FirstOrDefault();
+                TempData["coursebyid"] = db.Courses.Where(c=>c.CourseId ==course.CourseId).FirstOrDefault();
             }
             return View();
         }
 
         // POST: CourseController/Delete/5
         [HttpPost]
-        public ActionResult DeleteFinal(CourseModel course)
+        public ActionResult DeleteFinal(CourseModel courseDelete)
         {
             using(var db =new SchoolDbContext())
             {
-                db.Attach(course);
-                db.Courses.Remove(course);
+                db.Attach(courseDelete);
+                db.Courses.Remove(courseDelete);
                 db.SaveChanges();
-                TempData["courses"] = db.Courses.ToList();
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

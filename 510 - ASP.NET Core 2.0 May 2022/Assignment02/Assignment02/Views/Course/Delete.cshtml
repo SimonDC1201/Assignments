@@ -1,0 +1,29 @@
+﻿@model Assignment02.Models.CourseModel
+
+@{
+    ViewData["Title"] = "Delete";
+    CourseModel course = TempData["coursebyid"] as CourseModel;
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CourseModel</h4>
+    <div class="col-md-4">
+        <form asp-action="DeleteFinal" asp-controller="Course" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="CourseId" class="form-control" type="hidden" value="@course.CourseId" />
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" value="@course.CourseName" disabled/>
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
+</div>

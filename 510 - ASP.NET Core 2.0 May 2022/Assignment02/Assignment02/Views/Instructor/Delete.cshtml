@@ -15,8 +15,7 @@
         <form asp-action="DeleteFinal" asp-controller="Instructor" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="InstructorId" class="control-label"></label>
-                <input asp-for="InstructorId" value="@instructor.InstructorId" class="form-control" disabled/>
+                <input asp-for="InstructorId" value="@instructor.InstructorId" class="form-control" type="hidden"/>
                 <span asp-validation-for="InstructorId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,7 +37,7 @@
                 <label asp-for="CourseId" class="control-label"></label>
                 <input asp-for="CourseId" value="@instructor.CourseId" class="form-control" disabled/>
                 <span asp-validation-for="CourseId" class="text-danger"></span>
-                <input type="hidden" value="@instructor"/>
+                <input type="hidden" value="@instructor.InstructorId"/>
                 <button type="submit" value="delete" class="btn btn-danger">Delete</button>
             </div>
         </form>
