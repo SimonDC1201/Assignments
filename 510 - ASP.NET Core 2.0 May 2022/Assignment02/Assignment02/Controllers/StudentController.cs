@@ -38,50 +38,65 @@ namespace Assignment02.Controllers
             {
                 db.Add(student);
                 db.SaveChanges();
+                TempData["students"] = db.Students.ToList();
             }
-            return View(student);
+            return View("Index");
         }
 
         // GET: StudentController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost]
+        public ActionResult Edit(StudentModel item)
         {
+            using(var db = new SchoolDbContext())
+            {
+                TempData["studentbyid"] = db.Students.Where(s=>s.StudentId == item.StudentId).FirstOrDefault();
+            }
             return View();
         }
 
         // POST: StudentController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(StudentModel student)
         {
-            try
+            using(var db =new SchoolDbContext())
             {
-                return RedirectToAction(nameof(Index));
+                var studentTemp = db.Students.Where(s=>s.StudentId==student.StudentId).FirstOrDefault();
+
+                studentTemp.StudentId = student.StudentId;
+                studentTemp.FirstName = student.FirstName;
+                studentTemp.LastName = student.LastName;
+                studentTemp.Email = student.Email;
+                studentTemp.Phone = student.Phone;
+                studentTemp.CourseId = student.CourseId;
+
+                db.SaveChanges();
+                TempData["students"] = db.Students.ToList();
             }
-            catch
-            {
-                return View();
-            }
+
+            return View("Index");
         }
 
         // GET: StudentController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(StudentModel item)
         {
+            using (var db = new SchoolDbContext())
+            {
+                TempData["studentbyid"] = db.Students.Where(s => s.StudentId == item.StudentId).FirstOrDefault();
+            }
             return View();
         }
 
         // POST: StudentController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteFinal(StudentModel student)
         {
-            try
+            using (var db = new SchoolDbContext())
             {
-                return RedirectToAction(nameof(Index));
+                db.Attach(student);
+                db.Students.Remove(student);
+                db.SaveChanges();
+                TempData["students"] = db.Students.ToList();
             }
-            catch
-            {
-                return View();
-            }
+            return View("Index");
         }
     }
 }
