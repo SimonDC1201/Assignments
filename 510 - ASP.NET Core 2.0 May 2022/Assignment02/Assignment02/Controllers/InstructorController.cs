@@ -16,13 +16,7 @@ namespace Assignment02.Controllers
             }
             return View();
         }
-
-        // GET: InstructorController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+        
         // GET: InstructorController/Create
         public ActionResult Create()
         {
@@ -63,24 +57,23 @@ namespace Assignment02.Controllers
             }
         }
 
-        // GET: InstructorController/Delete/5
-        public ActionResult Delete(InstructorModel item)
+
+        public ActionResult Delete(InstructorModel instructorDelete)
         {
             using (var db = new SchoolDbContext())
             {
-                TempData["instructorbyid"] = db.Instructors.Where(i => i.InstructorId == item.InstructorId).FirstOrDefault();
+                TempData["instructorbyid"] = db.Instructors.Where(i => i.InstructorId == instructorDelete.InstructorId).FirstOrDefault();
             }
             return View();
         }
 
-        // POST: InstructorController/Delete/5
         [HttpPost]
-        public ActionResult DeleteFinal(InstructorModel asdfasdf)
+        public ActionResult DeleteFinal(InstructorModel instructorDeleteFinal)
         {
             using (var db = new SchoolDbContext())
             {
-                db.Attach(asdfasdf);
-                db.Instructors.Remove(asdfasdf);
+                db.Attach(instructorDeleteFinal);
+                db.Instructors.Remove(instructorDeleteFinal);
                 db.SaveChanges();
                 TempData["instructors"] = db.Instructors.ToList();
             }
