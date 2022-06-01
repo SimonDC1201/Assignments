@@ -29,7 +29,7 @@ namespace Assignment02.Controllers
         {
             using (var db = new SchoolDbContext())
             {
-                db.Add(instructors);
+                db.Instructors.Add(instructors);
                 db.SaveChanges();
                 TempData["instructors"] = db.Instructors.ToList();
             }
