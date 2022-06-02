@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Assignment02.Models.InstructorModel>
+
+@{
+    ViewData["Title"] = "Index";
+    List<InstructorModel> instructors = TempData["instructors"] as List<InstructorModel>;
+}
+
+<h1>List of all Instructors</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InstructorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var instructor in instructors) {
+        <tr>
+            <td>
+                @instructor.InstructorId
+            </td>
+            <td>
+                @instructor.FirstName
+            </td>
+            <td>
+                @instructor.LastName
+            </td>
+            <td>
+                @instructor.Email
+            </td>
+            <td>
+                @instructor.CourseId
+            </td>
+            <td>
+               <span>
+                   <form asp-action="Edit" asp-controller="Instructor" >
+                       <input type="hidden" asp-for="@instructor.InstructorId" value="@instructor.InstructorId"/>
+                       <button type="submit" class="btn btn-success">Edit</button>
+                   </form>
+               </span>
+               <span>
+                   <form asp-action="Delete" asp-controller="Instructor" method="post">
+                       <input type="hidden" asp-for="@instructor.InstructorId" value="@instructor.InstructorId"/>
+                       <button type="submit" class="btn btn-danger">Delete</button>
+                   </form>
+               </span>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

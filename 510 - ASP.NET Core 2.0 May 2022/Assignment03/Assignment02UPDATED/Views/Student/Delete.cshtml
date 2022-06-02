@@ -1,0 +1,57 @@
+﻿@model Assignment02.Models.StudentModel
+
+@{
+    ViewData["Title"] = "Delete";
+    StudentModel studentDelete = TempData["studenttodelete"] as StudentModel;
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>@studentDelete.FirstName @studentDelete.LastName</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteFinal" asp-controller="Student" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="StudentId" class="form-control" type="hidden" value="@studentDelete.StudentId" />
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" value="@studentDelete.FirstName" disabled/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" value="@studentDelete.LastName" disabled/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" value="@studentDelete.Email" disabled/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" value="@studentDelete.Phone" disabled/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label"></label>
+                <input asp-for="CourseId" class="form-control" value="@studentDelete.CourseId" disabled/>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+                <div class="form-group">
+                <input type="hidden" value="@studentDelete.StudentId"/>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" value="delete" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+ </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

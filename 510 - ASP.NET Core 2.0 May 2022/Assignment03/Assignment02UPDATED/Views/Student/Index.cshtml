@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Assignment02.Models.StudentModel>
+
+@{
+    ViewData["Title"] = "Index";
+    List<StudentModel> students = TempData["students"] as List<StudentModel>;
+}
+
+<h4>List of all Students</h4>
+
+<p>
+    <a asp-action="Create">Add New Student</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId) | 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName) | 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName) | 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email) | 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone) | 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var student in students) {
+        <tr>
+            <td>
+                @student.StudentId
+            </td>
+            <td>
+                @student.FirstName
+            </td>
+            <td>
+                @student.LastName
+            </td>
+            <td>
+                @student.Email
+            </td>
+            <td>
+                @student.Phone
+            </td>
+            <td>
+                @student.CourseId
+            </td>
+            <td>
+               <span>
+                   <form asp-action="Edit" asp-controller="Student">
+                       <input type="hidden" asp-for="@student.StudentId" value="@student.StudentId"/>
+                       <button type="submit" class="btn btn-success">Edit</button>
+                   </form>
+               </span>
+               <span>
+                   <form asp-action="Delete" asp-controller="Student" method="post">
+                       <input type="hidden" asp-for="@student.StudentId" value="@student.StudentId"/>
+                       <button type="submit" class="btn btn-danger">Delete</button>
+                   </form>
+               </span>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

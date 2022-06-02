@@ -12,6 +12,11 @@ namespace Assignment03.Models
         public int Id { get; set; }
         [StringLength(50)]
         public string Name { get; set; }
-        //public List<MenuItem> MenuItems { get; set; }
+        public List<MenuItem> MenuItems { get; set; }
+
+        public static void AddMenuItem(int Id, MenuItem menuItem) 
+        {
+            
+        }
     }
 }

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Assignment02.Models.CourseModel>
+
+@{
+    ViewData["Title"] = "Index";
+    List<CourseModel> courses = TempData["courses"] as List<CourseModel>;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var course in courses) {
+        <tr>
+            <td>
+                @course.CourseId
+            </td>
+            <td>
+                @course.CourseName
+            </td>
+            <td>
+               <span>
+                   <form asp-action="Edit" asp-controller="Course" method="post">
+                       <input type="hidden" asp-for="@course.CourseId" value="@course.CourseId"/>
+                       <button type="submit" class="btn btn-success">Edit</button>
+                   </form>
+               </span>
+               <span>
+                   <form asp-action="Delete" asp-controller="Course" method="post">
+                       <input type="hidden" asp-for="@course.CourseId" value="@course.CourseId"/>
+                       <button type="submit" class="btn btn-danger">Delete</button>
+                   </form>
+               </span>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
