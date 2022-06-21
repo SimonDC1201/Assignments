@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { ProductListComponent } from './shopping/product-list/product-list.component';
 import { ProductItemComponent } from './shopping/product-list/product-item/product-item.component';
+import { CartComponent } from './shopping/cart/cart.component';
+import { CartItemComponent } from './shopping/cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +24,16 @@ import { ProductItemComponent } from './shopping/product-list/product-item/produ
     FetchDataComponent,
     ShoppingComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: ShoppingComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'shopping', component: ShoppingComponent },

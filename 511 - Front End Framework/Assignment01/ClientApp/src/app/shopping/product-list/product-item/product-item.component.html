@@ -1,1 +1,4 @@
-<p>Product Name: {{product.productName}}; Product Id: {{product.productId}}; Unit Price: {{product.unitPrice}}</p>
+<div class="product-item">
+  <p>Product Name: {{product?.productName}}; Product Id: {{product?.productId}}; Unit Price: {{product?.unitPrice}}</p>
+  <button (click)="onAddToCart()">Add to Cart</button>
+</div>

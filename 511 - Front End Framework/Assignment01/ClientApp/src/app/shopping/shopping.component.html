@@ -1,3 +1,9 @@
 <div>
-  <app-product-list [products]="products"></app-product-list>
+  <h1>Shopping</h1>
+  <div class="shopping-parts">
+    <app-product-list [products]="products" (addToCart)="onAddToCart($event)"></app-product-list>
+  </div>
+  <div class="shopping-parts">
+    <app-cart [products]="cartItems"></app-cart>
+  </div>
 </div>
