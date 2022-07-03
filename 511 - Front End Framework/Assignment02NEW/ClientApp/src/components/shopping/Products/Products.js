@@ -10,7 +10,7 @@ export class Products extends React.Component {
         return (
             <div>
                 <p>This is a Product Page</p>
-                <p><Product /></p>
+                <div><Product /></div>
             </div>
         )
     }
