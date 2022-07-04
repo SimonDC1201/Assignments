@@ -10,9 +10,6 @@ export class Shopping extends React.Component{
             <div className="products-container">
             
             </div>
-            <div>
-
-            </div>
         )
     }
 }

@@ -22,11 +22,11 @@ namespace assignment02UPDATED.Controllers
             return _context.Products.ToList();
         }
 
-        [HttpGet]
-        public Product Get(int productId)
-        {
-            return _context.Products.Where(products => products.ProductId == productId).FirstOrDefault();
-        }
+        // [HttpGet]
+        // public Product Get(int productId)
+        // {
+        //     return _context.Products.Where(products => products.ProductId == productId).FirstOrDefault();
+        // }
 
     }
 }
